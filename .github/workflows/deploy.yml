@@ -3,30 +3,30 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # أو الفرع الذي تستخدمه مثل `deploy`
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # اختر النسخة المناسبة من Node.js
 
-      - name: Install dependencies
-        run: npm install
+    - name: Install dependencies
+      run: npm install
 
-      - name: Build project
-        run: npm run build
+    - name: Build the project
+      run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages  # الفرع الذي سيتم نشره عليه
+        folder: dist  # مجلد البناء الناتج من `vite build`
+        token: ${{ secrets.GITHUB_TOKEN }}  # يستخدم تلقائيًا من GitHub للإذن

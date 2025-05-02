@@ -7,6 +7,7 @@ import './index.css'
 import App from './App.jsx'
 import TokenContextProvider from './Context/TokenContext.jsx'
 import CarContextProvider from './Context/CartContext/CartContext.jsx';
+import 'flowbite';
 
 
 createRoot(document.getElementById('root')).render(
